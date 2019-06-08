@@ -81,9 +81,15 @@ body{
 
 }
 
+.nav-bar__active{
+    border: 2px var(--light-blue) solid;
+}
+
 .nav-bar__item{
     list-style: none;
     display: inline-flex;
+
+    padding: 0.5rem 1rem;
 
 }
 
