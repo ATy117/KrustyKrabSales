@@ -1,9 +1,22 @@
 :root {
-    --dark-blue: #2e3853; 
-    --medium-blue: #a4c9d3;
-    --light-blue: #d1e1e1;
-    --teal:#40a29d;
-    --deep-pink: #db2132;
+    --blue-dark: #2e3853;
+    --blue-mid: #40698f;
+    --blue-light: #a4c9d3;
+    --blue-white: #d1e1e1;
+
+    --red-pure: #db2132;
+    --red-light: #db4549;
+
+    --teal-pure: #40a29d;
+    --teal-light: #5ba29e;
+
+    --accent-orange: #e96634;
+    --accent-orange-light: #e9765b;
+    --accent-yellow: #ffab40;
+    --accent-yellow-light: #f3bb6e;
+
+    --font-main: "Roboto Slab Regular";
+    --font-2: "Ruda Regular";
   }
 
 *,
@@ -16,7 +29,7 @@
 
 html{
     font-size: 95%;
-    font-family: 'Ruda', sans-serif;
+    font-family: var(--font-main);
 
 }
 
@@ -45,7 +58,7 @@ body{
 /*Nav Bar*/
 
 .nav{
-    background-color: var(--dark-blue);
+    background-color: var(--blue-dark);
     color: white;
 
     width: 100vw;
@@ -56,7 +69,9 @@ body{
     padding: 0.5rem 3rem;
 
     font-size: 1.1rem;
-    font-family: 'Ruda', sans-serif;
+    font-family: var(--font-2);
+
+    filter: drop-shadow(0px 3px 10px #00000070);
 }
 
 /* .nav__logo-container{
@@ -97,7 +112,7 @@ body{
 }
 
 .nav-bar__active{
-    border: 2px var(--light-blue) solid;
+    border: 2px var(--blue-white) solid;
     border-radius: 2px;
 }
 
@@ -130,7 +145,7 @@ body{
     color: black;
     padding: 0.5rem 0.8rem;
 
-    background-color: var(--medium-blue);
+    background-color: var(--blue-white);
     border-radius: 2px;
 
 }
@@ -140,7 +155,7 @@ body{
 }
 
 .nav__button-active{
-    background-color: var(--deep-pink);
+    background-color: var(--red-pure);
     color: white;
     text-decoration: underline;
 }
@@ -174,6 +189,64 @@ body{
 
 
 /* End of Nav Bar*/
+
+/* Home */
+
+.home.container{
+    width: 100vw;
+    height: 600px;
+    background-color: var(--blue-mid);
+}
+
+#bubbles{
+    height: 800px;
+    width: auto;
+    float: right;
+
+    opacity: 0.5;
+}
+
+#logo{
+    padding-left: 90px;
+    padding-top: 40px;
+
+    position: absolute;
+
+    width: 500px;
+    height: auto;
+
+    filter: drop-shadow(0px 3px 10px #00000070);
+
+}
+
+
+.quotes{
+    font-family: var(--font-main);
+}
+
+#mainquote.quotes{
+    font-size: 36px;
+    width: 600px;
+    color: white;
+
+    position: absolute;
+    right: 15%; 
+    top: 200px;
+}
+
+.name{
+    font-family: var(--font-2);
+}
+
+#krabs{
+    font-size: 30px;
+    color: white;
+
+    position: absolute;
+    right: 20%;
+    top: 60%;
+}
+
 
 
 /* Log In*/
