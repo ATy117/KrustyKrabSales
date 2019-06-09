@@ -2,6 +2,8 @@
     --dark-blue: #2e3853; 
     --medium-blue: #a4c9d3;
     --light-blue: #d1e1e1;
+    --teal:#40a29d;
+    --deep-pink: #db2132;
   }
 
 *,
@@ -135,6 +137,12 @@ body{
 
 .nav__button:not(:last-child){
     margin-right: 2rem;
+}
+
+.nav__button-active{
+    background-color: var(--deep-pink);
+    color: white;
+    text-decoration: underline;
 }
 
 /* Nav Bar Media Queries */ 
