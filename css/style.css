@@ -1,9 +1,11 @@
 :root {
     --dark-blue: #2e3853; 
+    --medium-dark-blue: #40698f;
     --medium-blue: #a4c9d3;
     --light-blue: #d1e1e1;
     --teal:#40a29d;
     --deep-pink: #db2132;
+    --light-yellow: #f3bb6e;
   }
 
 *,
@@ -180,5 +182,64 @@ body{
 
 .logging{
     width: 100%;
-    border: 5px black solid;
+    height: 85vh;
+
+    background-image: linear-gradient(115deg, var(--light-blue) 0%, var(--light-blue) 50%, var(--medium-dark-blue) 50%);
+
+    position: relative;
 }
+
+.hat-logo{
+    width: 325px;
+    position: absolute;
+
+    right: 5vw;
+    top: 4rem;
+}
+
+.logging__sign-box{
+    position: absolute;
+    width: 30rem;
+    height: auto;
+
+
+    top: 5rem;
+    left: 6vw;
+
+    
+    font-family: "Roboto Slab";
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.logging__header{
+    display: block;
+    margin-bottom: 5rem;
+}
+
+
+.logging__button-box{
+    font-family: 'Ruda', sans-serif;
+    font-size: 1.5rem;
+}
+
+.logging__button-container{
+    width: 200px;
+    border-radius: 2px;
+    background-color: var(--light-yellow);
+    text-align: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.logging__button-container:not(:last-child){
+    margin-bottom: 1.5rem;
+}
+
+.logging__button{
+    text-decoration: none;
+    color: black;
+}
+
