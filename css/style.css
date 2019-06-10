@@ -15,8 +15,8 @@
     --accent-yellow: #ffab40;
     --accent-yellow-light: #f3bb6e;
 
-    --font-main: "Roboto Slab Regular";
-    --font-2: "Ruda Regular";
+    --font-main: "Roboto Slab";
+    --font-2: "Ruda";
   }
 
 *,
@@ -194,12 +194,12 @@ body{
 
 .home.container{
     width: 100vw;
-    height: 600px;
+    height: 85vh;
     background-color: var(--blue-mid);
 }
 
 #bubbles{
-    height: 800px;
+    height: 85vh;
     width: auto;
     float: right;
 
@@ -252,10 +252,10 @@ body{
 /* Log In*/
 
 .logging{
-    width: 100%;
+    width: 100vw;
     height: 85vh;
 
-    background-image: linear-gradient(115deg, var(--light-blue) 0%, var(--light-blue) 50%, var(--medium-dark-blue) 50%);
+    background-image: linear-gradient(115deg, var(--blue-light) 0%, var(--blue-light) 50%, var(--blue-mid) 50%);
 
     position: relative;
 }
@@ -292,6 +292,8 @@ body{
 .logging__button-box{
     font-family: 'Ruda', sans-serif;
     font-size: 1.5rem;
+
+    width: auto;
 }
 
 .logging__button{
@@ -312,6 +314,44 @@ body{
 }
 
 @media only screen and (max-width:990px){
+
+    .logging{
+        height: 100%;
+        position: relative;
+        text-align: center;
+    }
+
+    .hat-logo{
+        position: relative;
+
+        top: 3rem;
+        left: auto;
+        right: auto;
+        margin-bottom: 5rem;
+
+    }
+
+    .logging__sign-box{
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        margin: 0 auto;
+
+        margin-bottom: 5rem;
+        
+    }
+
+    .logging__button-box{
+        margin: 0 auto;
+    }
+
+    .logging__button{
+        margin: 0 auto;
+    }
+
+    
    
 
     
