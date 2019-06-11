@@ -364,7 +364,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
@@ -377,15 +377,14 @@ body{
 }
 
 .popup__content{
-    width: 50%;
-    height: 100px;
+    width: 30%;
+    height: auto;
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
     position: absolute;
     top:50%;
     left: 50%; 
     transform: translate(-50%, -50%) scale(.25);
     border-radius: 3px;
-    display: table;
     overflow: hidden;
     opacity: 0;
     transition: all 0.4s 0.2s;
@@ -403,6 +402,7 @@ body{
 
 .popup__close{
     font-size: 1.5rem;
+    box-shadow:  0 1rem 2rem rgba(0,0,0,0.15);
 }
 
 .popup__close:link, 
@@ -418,6 +418,61 @@ body{
 .close-login{
     background: var(--red-light);
     color: black;
+}
+
+.popup__login-logo{
+    background: var(--red-pure);
+    width: 100px;
+    height: 100px;
+
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.popup__login-form{
+    
+
+}
+
+.popup__login-field{
+    display: block;
+
+    width: 250px;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 1rem;
+
+    background: var(--accent-yellow-light);
+    font-size: 1rem;
+    font-family: 'Ruda', sans-serif;
+
+    border-radius: 7px;
+    border: 0px;
+}
+
+.popup__submit-button{
+    text-decoration: none;
+
+    display:block;
+    color: black;
+    width: 100px;
+    border-radius: 2px;
+    background-color: var(--red-light);
+    text-align: center;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    margin: 3rem auto;
+    box-shadow:  0 1rem 2rem rgba(0,0,0,0.15);
 }
 
 
