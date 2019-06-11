@@ -23,16 +23,23 @@
                 <li class="nav-bar__item"><a href="customer.html" class="nav-bar__link">Customers</a></li>
             </ul>
             <div class="nav-bar__button-container">
-                <a class="nav__button" href="login.html">Log In</a>
+                <a class="nav__button" href="#popup-login">Log In</a>
             </div>
         </div>
     </nav>
-    <div class="home container">
+    <div class="home container" id="main-home">
         <img src="resources/bubbles bg.png" id="bubbles">
         <img src="resources/KrustyKrabLogo2.png" alt="The Krusty Krab" id="logo">
         <p class="quotes" id="mainquote"> &nbsp; &nbsp; "We shall never deny a guest even the most ridiculous request." </p>
         <p class="name" id="krabs"> - Mr. Krabs </p>
     </div>
+
+    <section class="popup" id="popup-login">
+        <div class="popup__content login-bg">
+            <a href="#main-home" class="popup__close close-login">Back</a>
+
+        </div>
+    </section>
     
 </body>
 </html>
