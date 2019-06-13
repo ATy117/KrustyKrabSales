@@ -53,6 +53,7 @@ html{
 
 body{
     box-sizing: border-box;
+    overflow-x: hidden; 
 }
 
 /*Nav Bar*/
@@ -246,6 +247,77 @@ body{
 
 .extend_home{
     height: 800px;
+
+}
+
+/*Home Media*/
+@media only screen and (max-width: 800px){
+
+    .home.container{
+        height: 800px;
+    }
+
+    .home_content_list{
+        display: block;
+    }
+
+    #logo{
+        position: absolute;
+        width: 350px;
+        height: auto;
+    }
+
+    .home_words{
+        width: 100px;
+        top: 40rem;
+        right: 30rem;
+    }
+
+    #home_mainquote{
+        width: 450px;
+        font-size: 30px;
+    }
+
+    #name_krabs{
+        width: 450px;
+        font-size: 24px;
+    }
+
+}
+
+@media only screen and (max-width: 800px){
+
+    .home.container{
+        height: 800px;
+    }
+
+    .home_content_list{
+        display: block;
+    }
+
+    #logo{
+        position: absolute;
+        width: 350px;
+        height: auto;
+
+        left: 50%;
+    }
+
+    .home_words{
+        width: 100px;
+        top: 40rem;
+        right: 30rem;
+    }
+
+    #home_mainquote{
+        width: 450px;
+        font-size: 30px;
+    }
+
+    #name_krabs{
+        width: 450px;
+        font-size: 24px;
+    }
 
 }
 
@@ -488,37 +560,87 @@ body{
 
 /* End of Pop Up Content */
 
-/* Grub */
+/*About*/
+.about_container{
+    background-image: url(./../html/resources/bubbleBG2.png);
+    background-color: var(--blue-light);
+    background-repeat: no-repeat;
 
-#grub_header{
+    width: 100%;
+    height: 800px;
+}
+
+.about_list{
+    display: flex;
+}
+
+.about_icon{
+    margin-left: 14vw;
+    margin-top: 5vw;
+    
+    filter: drop-shadow(0vw 3rem 10rem #00000070);
+}
+
+.about_content{
+    margin-top: 7vw;
+    margin-left: 6vw;
+}
+
+#about_header{
+    font-size: 42px;
     font-family: var(--font-main);
-    font-size: 32px;
-    text-align: center;
 }
 
-.grub_icon{
-    width: 150px;
-    height: 150px;
+#about_content_details{
+    font-family: var(--font-2);
+    font-size:24px;
+    width: 700px;
 
-    filter: drop-shadow(0px 3px 10px #00000070);
 }
 
-.patties{
-    display: flex;
-    width: 200px;
-    height: 700px;
-    text-align: center;
-}
+/*End of ABout */
 
+/*Grub*/
 .grub_container{
-    display: flex;
-    
-    justify-content: space-evenly;
-    
-    align-content: center;
+    background-image: url(./../html/resources/bubbleBG2.png);
+    background-color: var(--blue-light);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 800px;
+
 }
 
-/*End of Grub*/
+.grub_header{
+    font-family: var(--font-main);
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+
+    padding-top:3vw; 
+
+}
+
+.grub_details{
+    height: 500px;
+    margin: auto;
+    width: 80%;
+}
+
+.grub_list{
+    display: flex;
+}
+
+.grub_info{
+    margin-top:2rem;
+    height: 500px;
+    width: 350px;
+    background-color: var(--teal-pure);
+
+    border-radius: 40px;
+}
+
+
+
 
 #result {
     display:block;
