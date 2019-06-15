@@ -149,14 +149,6 @@ window.onload = function(){
                     intersect: false
                 },
                 responsive: true,
-                scales: {
-                    xAxes: [{
-                        stacked: true,
-                    }],
-                    yAxes: [{
-                        stacked: true
-                    }]
-                }
             }
         });
 		
