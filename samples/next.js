@@ -15,6 +15,8 @@ window.onload = function(){
             return species_sales[key];
         });
 
+        clearCanvas();
+
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -63,6 +65,8 @@ window.onload = function(){
             return burger_sales[key];
         });
 
+        
+        clearCanvas();
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -99,8 +103,6 @@ window.onload = function(){
     document.getElementById('species-burger-sales').onclick = function() {
         var burger_properties= Object.keys(burger_by_species);
         var species_properties = Object.keys(burger_by_species[burger_properties[0]]);
-        console.log(burger_properties);
-        console.log(species_properties);
 
         var vals = new Array(); 
 
@@ -112,8 +114,8 @@ window.onload = function(){
 
             vals.push(data);
         }
-
-        console.log(vals);
+        
+        clearCanvas();
 
         
 		var barChartData = {
@@ -151,14 +153,11 @@ window.onload = function(){
                 responsive: true,
             }
         });
-		
-
-	
-	
-
-        
     };
+};
 
-    
+function clearCanvas(){
+    $('#myChart').remove(); // this is my <canvas> element
+    $('body').append('<canvas id="myChart" width="400" height="400"></canvas>');
 };
 
