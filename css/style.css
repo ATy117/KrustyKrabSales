@@ -628,6 +628,7 @@ body{
 
 .grub_list{
     display: flex;
+    text-align: center;
 }
 
 .grub_info{
@@ -639,9 +640,17 @@ body{
     border-radius: 40px;
 }
 
+.grub_details{
+    font-family: var(--font-2);
+    margin-top: 2rem;
+}
 
+.grub_icon{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
 
-
+/*End of Grubs*/
 #result {
     display:block;
     width:400px;
