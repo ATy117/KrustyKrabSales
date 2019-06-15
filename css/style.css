@@ -640,8 +640,9 @@ body{
     border-radius: 40px;
 }
 
-.grub_details{
+.grub_details_more{
     font-family: var(--font-2);
+    font-size: 16px;
     margin-top: 2rem;
 }
 
@@ -651,6 +652,58 @@ body{
 }
 
 /*End of Grubs*/
+/*Customer*/
+
+.customer_container{
+    background-image: url(./../html/resources/bubbleBG2.png);
+    background-color: var(--blue-light);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 800px;
+
+    text-align: center; 
+}
+
+#customer_header_main{
+    padding-top: 2rem;
+}
+
+.customer_list{
+    text-align: center;
+}
+
+.customer_info_container{
+    background-color: var(--teal-light);
+    width: 850px;
+    height: 200px;
+
+    border-radius: 30px;
+    display: inline-block;
+
+    margin-top: 2rem;
+}
+
+.customer_icon{
+    text-align: left;
+    justify-content: left;
+}
+
+.customer_info_list{
+    display: flex;
+
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.customer_infor{
+    margin-top: 1rem;
+}
+
+.customer_details{
+    font-family: var(--font-2);
+    margin-top: 1rem;
+}
+
 #result {
     display:block;
     width:400px;
