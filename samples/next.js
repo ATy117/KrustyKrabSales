@@ -3,6 +3,7 @@ window.onload = function(){
     const data = JSON.parse(sessionStorage.getItem('data'));
     const species_sales = data.species_sales;
     const burger_sales = data.burger_sales;
+    const burger_by_species = data.burger_by_species;
 
     document.getElementById('something').onclick = function() {
         console.log(data);
@@ -93,6 +94,77 @@ window.onload = function(){
                 }
             }
         });
+    };
+
+    document.getElementById('species-burger-sales').onclick = function() {
+        var burger_properties= Object.keys(burger_by_species);
+        var species_properties = Object.keys(burger_by_species[burger_properties[0]]);
+        console.log(burger_properties);
+        console.log(species_properties);
+
+        var vals = new Array(); 
+
+        for (var i = 0; i < burger_properties.length; i++) {
+            let cat = burger_by_species[burger_properties[i]];
+            var data =  Object.keys(cat).map(function(key) {
+                return cat[key];
+            });
+
+            vals.push(data);
+        }
+
+        console.log(vals);
+
+        
+		var barChartData = {
+			labels: species_properties,
+			datasets: [{
+				label: burger_properties[0],
+				backgroundColor: 'rgb(25, 27, 99)',
+				data: vals[0]
+			}, {
+				label: burger_properties[1],
+				backgroundColor: 'rgb(225, 227, 190)',
+				data: vals[1]
+			}, {
+				label: burger_properties[2],
+				backgroundColor: 'rgb(122, 217, 122)',
+				data: vals[2]
+			}]
+
+        };
+        
+        
+        var ctx = document.getElementById('myChart').getContext('2d');
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Sales by Burger per Species'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+        });
+		
+
+	
+	
+
+        
     };
 
     
