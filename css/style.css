@@ -610,11 +610,6 @@ body{
     
 }
 
-.popup__login-form{
-    
-
-}
-
 .popup__login-field{
     display: block;
 
@@ -695,6 +690,47 @@ body{
     font-size:24px;
     width: 700px;
 
+}
+
+/*About Media*/
+@media only screen and (max-width:1250px){
+    #about_content_details{
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width:1000px){
+    #about_content_details{
+        width: 400px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width:900px){
+    #about_content_details{
+        width: 400px;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width:800px){
+    .about_container{
+        justify-content: center;
+        text-align: center;
+    }
+    .about_list{
+        display: inline-block;
+        justify-content: center;
+        text-align: center;
+        right:0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    #about_content_details{
+        width: 400px;
+        font-size: 20px;
+    }
 }
 
 /*End of ABout */
@@ -805,6 +841,43 @@ body{
     font-family: var(--font-2);
     margin-top: 1rem;
 }
+
+/*Media Customers*/
+
+@media only screen and (max-width:900px){
+    .customer_info_container{
+        width: 500px;
+        height: 300px;
+    }
+
+    .customer_details{
+        width: 200px;
+    }
+
+    .customer_info_list{
+        text-align: center;
+        justify-content: center;
+    }
+
+    .customer_container{
+        height: 2800px;
+    }
+
+    .customer_icon{
+        margin-right: 2rem;
+    }
+    
+}
+
+@media only screen and (max-width:400px){
+    .customer_info_container{
+        width: 300px;
+        height: 100px;
+    }
+    
+}
+
+/*End of Customers*/
 
 #result {
     display:block;
