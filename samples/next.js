@@ -177,6 +177,11 @@ window.onload = function(){
         });
     });
 
+    $('#clear-button').click(function() {
+        sessionStorage.clear();
+        window.location.href = "stuff.html";
+    });
+
     
 };
 
