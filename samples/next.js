@@ -185,6 +185,7 @@ window.onload = function(){
         var properties = Object.keys(species_sales);
 
         var exactVals = new Array();
+        var check = new Object();
 
         for (var i = 0; i < properties.length; i++){
             var count = 0;
@@ -198,8 +199,11 @@ window.onload = function(){
                 }
             });
 
+            check[(properties[i])] = count;
+
             exactVals.push(count);
         }
+        console.log(check);
 
         clearCanvas();
 
