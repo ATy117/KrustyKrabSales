@@ -179,7 +179,78 @@ window.onload = function(){
             console.log(spec);
         } else {
             console.log("None");
+            return;
         }
+
+        var properties = Object.keys(species_sales);
+
+        var exactVals = new Array();
+
+        for (var i = 0; i < properties.length; i++){
+            var count = 0;
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                if ((single.datetime).includes(spec) && (single.species).includes(properties[i])){
+                    console.log(single.datetime + properties[i] );
+                    count++;
+                }
+            });
+
+            exactVals.push(count);
+        }
+
+        clearCanvas();
+
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chartData = {
+            labels: properties,
+            datasets: [{
+                data: exactVals,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(123, 222, 10, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(123, 222, 10, 1)'
+                ],
+            }]
+        };
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                title: {
+                    display: true,
+                    text: `Sales by Species for ${spec}`
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+        
     });
 };
 
