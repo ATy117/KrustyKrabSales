@@ -102,6 +102,81 @@ window.onload = function(){
         });
     });
 
+    $('#specific-species-burger-sales').click(function() {
+
+        var spec = document.getElementById('specific-date').value;
+        if (spec){
+            console.log(spec);
+        } else {
+            console.log("None");
+            return;
+        }
+
+        var vals = new Array(); 
+
+        for (var k = 0; k < burger_properties.length; k++) {
+            var indiv = new Array();
+
+            for (var i = 0; i < species_properties.length; i++){
+                var count = 0;
+    
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+    
+                    if ((single.datetime).includes(spec) && (single.species).includes(species_properties[i]) && (single.burger).includes(burger_properties[k])){
+                        console.log(single.datetime + species_properties[i] + burger_properties[k] );
+                        count++;
+                    }
+                });
+
+                indiv.push(count);
+    
+            }
+
+            vals.push(indiv);
+            
+        }
+        
+        clearCanvas();
+
+        
+		var barChartData = {
+			labels: species_properties,
+			datasets: [{
+				label: burger_properties[0],
+				backgroundColor: 'rgb(25, 27, 99)',
+				data: vals[0]
+			}, {
+				label: burger_properties[1],
+				backgroundColor: 'rgb(205, 17, 27)',
+				data: vals[1]
+			}, {
+				label: burger_properties[2],
+				backgroundColor: 'rgb(122, 217, 122)',
+				data: vals[2]
+			}]
+
+        };
+        
+        
+        var ctx = document.getElementById('myChart').getContext('2d');
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                title: {
+                    display: true,
+                    text: `${spec} Sales By Species per Burger`
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+            }
+        });
+    });
+
     
 };
 
@@ -136,7 +211,7 @@ function generateSpeciesSalesData(date){
             exactVals.push(count);
         }
 
-        check['properties'] = species_properties;
+        check['species_properties'] = species_properties;
         check['values'] = exactVals;
         console.log(check);
 
@@ -146,7 +221,7 @@ function generateSpeciesSalesData(date){
             return species_sales[key];
         });
 
-        check['properties'] = species_properties;
+        check['species_properties'] = species_properties;
         check['values'] = vals;
         console.log(check);
     }
@@ -166,7 +241,7 @@ function generateSpeciesSalesData(date){
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chartData = {
-        labels: check.properties,
+        labels: check.species_properties,
         datasets: [{
             data: check.values,
             backgroundColor: check.colors,
@@ -222,7 +297,7 @@ function generateBurgerSalesData(date){
             exactVals.push(count);
         }
 
-        check['properties'] = burger_properties;
+        check['burger_properties'] = burger_properties;
         check['values'] = exactVals;
         console.log(check);
 
@@ -232,7 +307,7 @@ function generateBurgerSalesData(date){
             return burger_sales[key];
         });
 
-        check['properties'] = burger_properties;
+        check['burger_properties'] = burger_properties;
         check['values'] = vals;
         console.log(check);
     }
@@ -248,7 +323,7 @@ function generateBurgerSalesData(date){
     var ctx = document.getElementById('myChart').getContext('2d');
 
     var chartData = {
-        labels: check.properties,
+        labels: check.burger_properties,
         datasets: [{
             data: check.values,
             backgroundColor: check.colors,
