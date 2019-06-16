@@ -32,49 +32,7 @@ window.onload = function(){
     });
 
     $('#burger-sales').click(function() {
-        var data = getBurgerSalesData('');
-
-        clearCanvas();
-
-        var ctx = document.getElementById('myChart').getContext('2d');
-
-        var chartData = {
-            labels: data.properties,
-            datasets: [{
-                data: data.values,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-            }]
-        };
-
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: chartData,
-            options: {
-                title: {
-                    display: true,
-                    text: 'Sales by Burger'
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                legend: {
-                    display: false
-                }
-            }
-        });
+        generateBurgerSalesData('');
     });
 
     $('#specific-burger-sales').click(function() {
@@ -86,57 +44,7 @@ window.onload = function(){
             return;
         }
 
-        var data = getBurgerSalesData(spec);
-
-        clearCanvas();
-
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chartData = {
-            labels: data.properties,
-            datasets: [{
-                data: data.values,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(123, 222, 10, 1)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(123, 222, 10, 1)'
-                ],
-            }]
-        };
-
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: chartData,
-            options: {
-                title: {
-                    display: true,
-                    text: `Sales by Burger for ${spec}`
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                legend: {
-                    display: false
-                }
-            }
-        });
-        
+        generateBurgerSalesData(spec);
     });
 
     $('#species-burger-sales').click(function() {
@@ -288,12 +196,16 @@ function generateSpeciesSalesData(date){
     });
 };
 
-function getBurgerSalesData(date){
+function generateBurgerSalesData(date){
 
     var exactVals = new Array();
     var check = new Object();
 
+    var titleDate;
+
     if (date){
+
+        titleDate = date;
 
         for (var i = 0; i < burger_properties.length; i++){
             var count = 0;
@@ -315,6 +227,7 @@ function getBurgerSalesData(date){
         console.log(check);
 
     } else {
+        titleDate = 'General';
         var vals = Object.keys(burger_sales).map(function(key) {
             return burger_sales[key];
         });
@@ -324,6 +237,45 @@ function getBurgerSalesData(date){
         console.log(check);
     }
 
-    return check;
+    clearCanvas();
+
+    check['colors'] =  [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+    ];
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var chartData = {
+        labels: check.properties,
+        datasets: [{
+            data: check.values,
+            backgroundColor: check.colors,
+            borderColor: check.colors
+        }]
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                text: `${titleDate} Sales by Burger`
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+
 };
 
