@@ -24,7 +24,7 @@ window.onload = function(){
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var chartData = {
-            labels: data.species_properties,
+            labels: data.properties,
             datasets: [{
                 data: data.values,
                 backgroundColor: [
@@ -85,7 +85,7 @@ window.onload = function(){
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var chartData = {
-            labels: data.species_properties,
+            labels: data.properties,
             datasets: [{
                 data: data.values,
                 backgroundColor: [
@@ -140,7 +140,7 @@ window.onload = function(){
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var chartData = {
-            labels: data.burger_properties,
+            labels: data.properties,
             datasets: [{
                 data: data.values,
                 backgroundColor: [
@@ -193,7 +193,7 @@ window.onload = function(){
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var chartData = {
-            labels: data.burger_properties,
+            labels: data.properties,
             datasets: [{
                 data: data.values,
                 backgroundColor: [
@@ -325,7 +325,7 @@ function getSpeciesSalesData(date){
             exactVals.push(count);
         }
 
-        check['species_properties'] = species_properties;
+        check['properties'] = species_properties;
         check['values'] = exactVals;
         console.log(check);
 
@@ -334,7 +334,7 @@ function getSpeciesSalesData(date){
             return species_sales[key];
         });
 
-        check['species_properties'] = species_properties;
+        check['properties'] = species_properties;
         check['values'] = vals;
         console.log(check);
     }
@@ -364,7 +364,7 @@ function getBurgerSalesData(date){
             exactVals.push(count);
         }
 
-        check['burger_properties'] = burger_properties;
+        check['properties'] = burger_properties;
         check['values'] = exactVals;
         console.log(check);
 
@@ -373,7 +373,7 @@ function getBurgerSalesData(date){
             return burger_sales[key];
         });
 
-        check['burger_properties'] = burger_properties;
+        check['properties'] = burger_properties;
         check['values'] = vals;
         console.log(check);
     }
