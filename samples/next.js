@@ -4,12 +4,13 @@ window.onload = function(){
     const species_sales = data.species_sales;
     const burger_sales = data.burger_sales;
     const burger_by_species = data.burger_by_species;
+    const sales = data.sales;
 
-    document.getElementById('something').onclick = function() {
+    $('#something').click(function() {
         console.log(data);
-    };
+    });
 
-    document.getElementById('species-sales').onclick = function() {
+    $('#species-sales').click(function() {
         var properties = Object.keys(species_sales);
         var vals = Object.keys(species_sales).map(function(key) {
             return species_sales[key];
@@ -64,9 +65,9 @@ window.onload = function(){
                 }
             }
         });
-    };
+    });
 
-    document.getElementById('burger-sales').onclick = function() {
+    $('#burger-sales').click(function() {
         var properties1 = Object.keys(burger_sales);
         var vals1 = Object.keys(burger_sales).map(function(key) {
 
@@ -115,9 +116,9 @@ window.onload = function(){
                 }
             }
         });
-    };
+    });
 
-    document.getElementById('species-burger-sales').onclick = function() {
+    $('#species-burger-sales').click(function() {
         var burger_properties= Object.keys(burger_by_species);
         var species_properties = Object.keys(burger_by_species[burger_properties[0]]);
 
@@ -170,7 +171,16 @@ window.onload = function(){
                 responsive: true,
             }
         });
-    };
+    });
+
+    $('#specific-species-sales').click(function() {
+        var spec = document.getElementById('specific-date').value;
+        if (spec){
+            console.log(spec);
+        } else {
+            console.log("None");
+        }
+    });
 };
 
 function clearCanvas(){
