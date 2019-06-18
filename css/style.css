@@ -879,12 +879,99 @@ body{
 
 /*End of Customers*/
 
-#result {
-    display:block;
-    width:400px;
-    height:200px;
-  }
-  
-  #import {
-    margin:10px 0;
-  }
+/* Upload Section  */
+
+.upload__section{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--accent-yellow-light);
+    position: relative;
+
+}
+
+.upload__container{
+    width: 50%;
+    height: auto;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
+    position: absolute;
+    top:50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    overflow: hidden;
+    text-align: center;
+    color: var(--blue-dark);
+}
+
+.upload__banner{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.upload__input{
+    margin: 0 auto;
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload__label{
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 200px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--teal-light);
+    background-color:var(--blue-dark);
+    cursor: pointer;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    
+}
+
+.upload__button{
+    display: inline-block;
+    text-decoration: none;
+    width: 150px;
+    height: auto;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 15px;   
+}
+
+.upload__button:not(:last-child){
+    margin-right: 15px;
+}
+
+.upload__continue{
+    background-color: var(--red-light);
+    border: 2px solid var(--red-pure);
+    color: white;
+}
+
+.upload__logout{
+    color: var(--accent-orange);
+    border: 2px solid var(--accent-orange);
+}
+
+@media only screen and (max-width:636px){
+    .upload__button{
+        margin: 10px auto;
+    }
+    
+    .upload__button:not(:last-child){
+        margin-right: 0px;
+    }
+}
+
+
+
+/* End of Upload Section     */

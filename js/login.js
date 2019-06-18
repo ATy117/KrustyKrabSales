@@ -4,8 +4,7 @@ $(".popup__submit-button").click(function(){
 
     
     if (username =='admin' && password=='p@ssword'){
-        console.log("Yay");
-        window.location.href = "../html/dashboard.html";
+        window.location.href = "../html/upload.html";
     } else {
         console.log("nay");
     }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload Your JSON Data</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="../js/upload-file.js"></script>
+</head>
+<body>
+    <!-- <input type="file" id="selectFiles" value="Import" /><br />
+    <button id="import">Import</button> -->
+
+    <main class="upload__section">
+        <div class="upload__container">
+            <h2 class="upload__banner">Start by uploading your Krusty Krab data!</h2>
+            <input type="file" name="file" id="selectFiles" class="upload__input" data-multiple-caption="{count} files selected" multiple>
+            <label for="selectFiles" class="upload__label"><span>Choose A File</span></label>
+            <a href="" class="upload__button upload__continue" id="continue">Continue</a>
+            <a href="" class="upload__button upload__logout">Log Out</a>
+
+        </div>
+    </main>
+</body>
+</html>
