@@ -972,6 +972,46 @@ body{
     }
 }
 
-
-
 /* End of Upload Section     */
+
+/* Start of Dashboard Section */
+
+.dashboard__nav{
+    background-color: var(--accent-yellow-light);
+    color: var(--blue-dark);
+    font-weight: 400;
+    width: 100%;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.dashboard__nav-container{
+    display: flex;
+    justify-content: flex-start;
+
+    width: auto;
+    margin: auto 0;
+}
+
+.dashboard__nav-item{
+    list-style: none;
+    display: inline-flex;
+
+    padding: 0.5rem 1rem;
+    
+    border: 3px solid var(--blue-dark);
+    border-radius: 5px;
+}
+
+.dashboard__nav-item:not(:last-child){
+    margin-right: 2.5rem;
+}
+
+.dashboard__contents{
+    background-color: var(--blue-dark);
+    width: 100%;
+    height: 90vh;
+}
