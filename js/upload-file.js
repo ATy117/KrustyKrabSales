@@ -13,10 +13,11 @@ window.onload = function(){
         var result = JSON.parse(e.target.result);
         var formatted = JSON.stringify(result, null, 2);
         sessionStorage.setItem('data', formatted);
-        window.location.href = "dashboard.html";
+        window.location.href = "../html/dashboard.html";
     }
     
     fr.readAsText(files.item(0));
+    console.log("in continue");
   });
 
     var inputs = document.querySelectorAll( '.upload__input' );
