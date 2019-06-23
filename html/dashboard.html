@@ -12,20 +12,27 @@
 </head>
 <body>
     <main class="dashboard">
-        <nav class="dashboard__nav">
+        <nav class="dashboard__nav-secondary">
+            <div class="dashboard__date-container">
+                <input type="date" name="bday" id="specific-date">
+            </div>
             <ul class="dashboard__nav-container">
                 <li class="dashboard__nav-item dashboard__nav-item-graph">Sales by Species</li>
                 <li class="dashboard__nav-item dashboard__nav-item-graph">Sales by Burger</li>
                 <li class="dashboard__nav-item dashboard__nav-item-graph">Sales by Burger per Species</li>
                 <li class="dashboard__nav-item dashboard__nav-item-graph">Sales Growth</li>
-                <li class="dashboard__nav-item dashboard__nav-item-table">Show All Data</li>
-                <li class="dashboard__nav-item dashboard__nav-item-negative">Clear Data</li>
-                <li class="dashboard__nav-item dashboard__nav-item-negative">Log Out</li>
             </ul>
         </nav>
         <section class="dashboard__contents">
 
         </section>
+        <nav class="dashboard__nav">
+            <ul class="dashboard__nav-container">
+                <li class="dashboard__nav-item dashboard__nav-item-table">Show All Data</li>
+                <li class="dashboard__nav-item dashboard__nav-item-negative">Clear Data</li>
+                <li class="dashboard__nav-item dashboard__nav-item-negative">Log Out</li>
+            </ul>
+        </nav>
     </main>
     
 </body>

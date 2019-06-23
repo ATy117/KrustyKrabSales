@@ -983,36 +983,43 @@ body{
 }
 
 .dashboard__nav{
-    background-color: var(--accent-yellow-light);
+    background-color: var(--accent-yellow);
 
     font-weight: 700;
     width: 100%;
     height: auto;
-
     display: flex;
     justify-content: center;
-    align-items: center;
+    
+    padding: 1rem;
 
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+}
+
+.dashboard__nav-secondary{
+    background-color: var(--accent-yellow);
+
+    font-weight: 700;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    padding: 1rem;
 
 }
 
 .dashboard__nav-container{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
+    align-items: center;
 
     width: auto;
 }
 
 .dashboard__nav-item{
     list-style: none;
-    display: inline-flex;
-
-    padding: 0.5rem 1rem;
-    
-    
-    border-radius: 5px;
+    display: flex;
     cursor: pointer;
 }
 
@@ -1021,19 +1028,37 @@ body{
 }
 
 .dashboard__nav-item-graph{
-    border: 3px solid var(--blue-dark);
+    border-bottom: 3px solid var(--blue-dark);
     color: var(--blue-dark);
 }
 
 .dashboard__nav-item-table{
-    border: 3px solid var(--red-pure);
+    border-bottom: 3px solid var(--red-pure);
     color: var(--red-pure);
 }
 
 .dashboard__nav-item-negative{
-    border: 3px solid var(--accent-orange);
+    border-bottom: 3px solid var(--accent-orange);
     color: var(--accent-orange);
 }
+
+.dashboard__date-container{
+    margin: 0 auto;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+#specific-date{
+    appearance: none;
+    border: 2px solid var(--blue-dark);
+    color: var(--blue-dark);
+    background: transparent;
+    padding: 1px;
+}
+  #specific-date::-webkit-datetime-edit-month-field { text-transform: uppercase; }
+  #specific-date::-webkit-datetime-edit-day-field { text-transform: uppercase; }
+  #specific-date::-webkit-datetime-edit-year-field { text-transform: uppercase; }
+  #specific-date::-webkit-inner-spin-button { display: none; }
+  #specific-date::-webkit-calendar-picker-indicator { background: transparent;}
 
 .dashboard__contents{
     background-color: var(--blue-dark);
