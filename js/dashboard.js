@@ -49,6 +49,36 @@ window.onload = function(){
 
 
     $('#show-data').click(function() {
+        
+
+        var tableData = Object.keys(sales).map(function(key) {
+
+            var row = new Object();
+
+            var single = sales[key];
+
+            row['id'] = key;
+            row['datetime'] = single.datetime;
+            row['species'] = single.species;
+            row['burger'] = single.burger;
+            return row;
+        });
+
+        console.log(tableData);
+
+        clearCanvas();
+
+        var table = new Tabulator("#tableDetails", {
+            data:tableData, //assign data to table
+            height:"100%",
+            layout:"fitDataFill", //fit columns to width of table (optional)
+            columns:[ //Define Table Columns
+                {title:"ID", field:"id", width:150},
+                {title:"DateTime", field:"datetime", align:"center", sorter:"date"},
+                {title:"Species", field:"species"},
+                {title:"Burger Bought", field:"burger", align:"center"},
+            ]
+       });
     });
 
     $('#clear-data').click(function() {
@@ -64,7 +94,7 @@ window.onload = function(){
 
 function clearCanvas(){
     $('#myChart').remove(); // this is my <canvas> element
-    $('.dashboard__contents').append('<canvas id="myChart" width="400" height="400"></canvas>');
+    $('.dashboard__contents').prepend('<canvas id="myChart" width="400" height="400"></canvas>');
 };
 
 function generateSpeciesSalesData(date){

@@ -1068,8 +1068,8 @@ body{
     display: flex;
 }
 
-.myChart{
-    width: 100%;
+.dashboard__table-container{
     height: 100%;
-    flex: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
