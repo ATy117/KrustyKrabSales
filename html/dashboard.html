@@ -19,7 +19,23 @@
     <main class="dashboard">
         <nav class="dashboard__nav-secondary">
             <div class="dashboard__date-container">
-                <input type="date" name="bday" id="specific-date">
+                <input type="date" name="bday" id="specific-date" class="dashboard__options-main">
+                <select class="dashboard__options-main dashboard__options-separate" id="species-filter">
+                    <option value="general">All Species</option>
+                    <option value="leatherback turtle">Leatherback Turtle</option>
+                    <option value="salmon">Salmon</option>
+                    <option value="seahorse">Seahorse</option>
+                    <option value="coral">Coral</option>
+                    <option value="giant clam">Giant Clam</option>
+                    <option value="grey whale">Grey Whale</option>
+                    <option value="sea lion">Sea Lion</option>
+                </select>
+                <select class="dashboard__options-main dashboard__options-separate"id="burger-filter">
+                    <option value="general">All Burgers</option>
+                    <option value="Krusty Combo">Krusty Combo</option>
+                    <option value="Krusty Deluxe">Krusty Deluxe</option>
+                    <option value="Krabbie Pattie">Krabbie Pattie</option>
+                </select>
             </div>
             <ul class="dashboard__nav-container">
                 <li class="dashboard__nav-item dashboard__nav-item-graph" id="sale-species">Sales by Species</li>
