@@ -182,6 +182,18 @@ function generateSpeciesSalesData(date){
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
+                    },
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Number of Burgers Sold'
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Species'
                     }
                 }]
             },
@@ -265,6 +277,18 @@ function generateBurgerSalesData(date){
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
+                    },
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Number of Burgers Sold'
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Burger Variant'
                     }
                 }]
             },
@@ -361,7 +385,26 @@ function generateBurgerBySpeciesSalesData(date){
                 intersect: false
             },
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Number of Burgers Sold'
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Burgers by Species'
+                    }
+                }]
+            }
         }
     });
 };
