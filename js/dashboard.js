@@ -54,6 +54,96 @@ window.onload = function(){
         // var stuff = sales[keys[0]].datetime;
         // var date = moment(stuff,"YYYY-MM-DD HH:mm:ss");
         // console.log(date);
+
+        /* General */
+
+        var check = new Object();
+
+        var availableDates = new Array();
+        var vals = new Array();
+
+        Object.keys(sales).map(function(key) {
+            var single = sales[key];
+
+            var rawDate = single.datetime;
+            var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+            var dateString = moment(actualDate).format("MMM D");
+
+            if (!(availableDates.includes(dateString))){
+                availableDates.push(dateString);
+            }
+        });
+
+        for (var i = 0; i < availableDates.length; i++){
+            var count = 0;
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+    
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("MMM D");
+
+                if (dateString == availableDates[i]){
+                    count++;
+                }
+    
+            });
+
+            vals.push(count);
+        }
+
+        console.log(availableDates);
+        console.log(vals);
+
+        check['labels'] = availableDates;
+        check['values'] = vals;
+
+
+
+        clearCanvas();
+		var ctx = document.getElementById('myChart').getContext('2d');
+        
+		var chartData = {
+            labels: check.labels,
+            datasets: [{
+                data: check.values,
+                fill: false,
+                backgroundColor: 'rgba(255,255,255, 1)',
+                borderColor: 'rgba(255,255,255, 1)'
+            }]
+        };
+    
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: chartData,
+            options: {
+                title: {
+                    display: true,
+                    text: `Sales Over Time`
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        display: true,
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Number of Burgers Sold'
+                        }
+                    }]
+                },
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false
+            }
+        });
+
+	
+	
     });
 
 
