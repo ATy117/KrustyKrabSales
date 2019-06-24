@@ -50,7 +50,10 @@ window.onload = function(){
     $('#sale-growth').click(function(){
         var speciesSelected = $('select#species-filter').children("option:selected").val();
         var burgerSelected = $('select#burger-filter').children("option:selected").val();
-        console.log(speciesSelected + burgerSelected);
+        // var keys = Object.keys(sales);
+        // var stuff = sales[keys[0]].datetime;
+        // var date = moment(stuff,"YYYY-MM-DD HH:mm:ss");
+        // console.log(date);
     });
 
 
