@@ -826,6 +826,39 @@ body{
     width: 140px;
 }
 
+#Coral.customer_icon{
+    background-image: url(./../html/resources/coral.png);
+    background-size: 140px 140px;
+}
+#Whale.customer_icon{
+    background-image: url(./../html/resources/whale.png);
+    background-size: 140px 140px;
+}
+
+#Clam.customer_icon{
+    background-image: url(./../html/resources/clamIcon.png);
+    background-size: 140px 140px;
+}
+
+#Turtle.customer_icon{
+    background-image: url(./../html/resources/turtle.png);
+    background-size: 140px 140px;
+}
+
+#Seal.customer_icon{
+    background-image: url(./../html/resources/sealion.png);
+    background-size: 140px 140px;
+}
+
+#SeaHorse.customer_icon{
+    background-image: url(./../html/resources/seahorse.png);
+    background-size: 140px 140px;
+}
+
+#Salmon.customer_icon{
+    background-image: url(./../html/resources/salmon.png);
+    background-size: 140px 140px;
+}
 .customer_info_list{
     display: flex;
 
@@ -835,11 +868,13 @@ body{
 
 .customer_infor{
     margin-top: 1rem;
+    margin-left: 3rem;
 }
 
 .customer_details{
     font-family: var(--font-2);
     margin-top: 1rem;
+    width: 600px;
 }
 
 /*Media Customers*/
