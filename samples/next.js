@@ -190,6 +190,94 @@ function clearCanvas(){
     $('body').append('<canvas id="myChart" width="400" height="400"></canvas>');
 };
 
+function generateBurgerBySpeciesSalesData(date){
+
+    var titleDate;
+    
+    if (date){
+
+        titleDate = date;
+
+        var vals = new Array(); 
+
+        for (var k = 0; k < burger_properties.length; k++) {
+            var indiv = new Array();
+
+            for (var i = 0; i < species_properties.length; i++){
+                var count = 0;
+    
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+    
+                    if ((single.datetime).includes(date) && (single.species).includes(species_properties[i]) && (single.burger).includes(burger_properties[k])){
+                        console.log(single.datetime + species_properties[i] + burger_properties[k] );
+                        count++;
+                    }
+                });
+
+                indiv.push(count);
+    
+            }
+
+            vals.push(indiv);
+            
+        }
+        
+    } else {
+        titleDate = 'General';
+
+        var vals = new Array(); 
+
+        for (var i = 0; i < burger_properties.length; i++) {
+            let cat = burger_by_species[burger_properties[i]];
+            var data =  Object.keys(cat).map(function(key) {
+                return cat[key];
+            });
+
+            vals.push(data);
+        }
+    }
+
+    clearCanvas();
+
+        
+    var barChartData = {
+        labels: species_properties,
+        datasets: [{
+            label: burger_properties[0],
+            backgroundColor: 'rgb(25, 27, 99)',
+            data: vals[0]
+        }, {
+            label: burger_properties[1],
+            backgroundColor: 'rgb(205, 17, 27)',
+            data: vals[1]
+        }, {
+            label: burger_properties[2],
+            backgroundColor: 'rgb(122, 217, 122)',
+            data: vals[2]
+        }]
+
+    };
+    
+    
+    var ctx = document.getElementById('myChart').getContext('2d');
+    window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            title: {
+                display: true,
+                text: `${titleDate} Sales By Species per Burger`
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            responsive: true,
+        }
+    });
+};
+
 function generateSpeciesSalesData(date){
 
     var exactVals = new Array();

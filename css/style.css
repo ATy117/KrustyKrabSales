@@ -1082,12 +1082,18 @@ body{
     padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
-#specific-date{
+.dashboard__options-main{
     appearance: none;
     border: 2px solid var(--blue-dark);
     color: var(--blue-dark);
     background: transparent;
     padding: 1px;
+    margin-right: 1rem;
+}
+
+.dashboard__options-separate{
+    border: 2px solid var(--red-pure);
+    color: var(--red-light);
 }
   #specific-date::-webkit-datetime-edit-month-field { text-transform: uppercase; }
   #specific-date::-webkit-datetime-edit-day-field { text-transform: uppercase; }
@@ -1100,4 +1106,11 @@ body{
     width: 100%;
     height: 100%;
     flex: 1;
+    display: flex;
+}
+
+.dashboard__table-container{
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
