@@ -1,5 +1,5 @@
 window.onload = function(){ 
-  document.getElementById('continue').onclick = function() {
+  $('#continue').click(function() {
     var files = document.getElementById('selectFiles').files;
     console.log(files);
     if (files.length <= 0) {
@@ -17,7 +17,7 @@ window.onload = function(){
     }
     
     fr.readAsText(files.item(0));
-  };
+  });
 
     var inputs = document.querySelectorAll( '.upload__input' );
     Array.prototype.forEach.call( inputs, function( input )

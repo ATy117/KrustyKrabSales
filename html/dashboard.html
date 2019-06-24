@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <script src="../js/dashboard.js"></script>
+</head>
+<body>
+    <main class="dashboard">
+        <nav class="dashboard__nav-secondary">
+            <div class="dashboard__date-container">
+                <input type="date" name="bday" id="specific-date">
+            </div>
+            <ul class="dashboard__nav-container">
+                <li class="dashboard__nav-item dashboard__nav-item-graph" id="sale-species">Sales by Species</li>
+                <li class="dashboard__nav-item dashboard__nav-item-graph" id="sale-burger">Sales by Burger</li>
+                <li class="dashboard__nav-item dashboard__nav-item-graph" id="sale-burger-species">Sales by Burger per Species</li>
+                <li class="dashboard__nav-item dashboard__nav-item-graph" id="sale-growth">Sales Growth</li>
+            </ul>
+        </nav>
+        <section class="dashboard__contents">
+
+        </section>
+        <nav class="dashboard__nav">
+            <ul class="dashboard__nav-container">
+                <li class="dashboard__nav-item dashboard__nav-item-table" id="show-data">Show All Data</li>
+                <li class="dashboard__nav-item dashboard__nav-item-negative" id="clear-data">Clear Data</li>
+                <li class="dashboard__nav-item dashboard__nav-item-negative" id="log-out">Log Out</li>
+            </ul>
+        </nav>
+    </main>
+    
+</body>
+</html>
