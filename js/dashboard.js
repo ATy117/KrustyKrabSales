@@ -65,6 +65,26 @@ window.onload = function(){
         var check = new Object();
 
         if (spec){
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                if (rawDate.includes(spec)){
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("hh A");
+
+                    if (!(availableDates.includes(dateString))){
+                        availableDates.push(dateString);
+                    }
+                }
+            });
+
+            console.log(availableDates);
         
         } else {
             if (burgerSelected == 'general' && speciesSelected == 'general'){
