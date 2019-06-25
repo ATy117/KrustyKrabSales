@@ -247,7 +247,7 @@ window.onload = function(){
                     var rawDate = single.datetime;
                     var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                    var dateString = moment(actualDate).format("MMM D");
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
 
                     if (!(availableDates.includes(dateString))){
                         availableDates.push(dateString);
@@ -262,7 +262,7 @@ window.onload = function(){
                         var rawDate = single.datetime;
                         var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                        var dateString = moment(actualDate).format("MMM D");
+                        var dateString = moment(actualDate).format("MMM D, YYYY");
 
                         if (dateString == availableDates[i]){
                             count++;
@@ -287,7 +287,7 @@ window.onload = function(){
                     var rawDate = single.datetime;
                     var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                    var dateString = moment(actualDate).format("MMM D");
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
 
                     if (!(availableDates.includes(dateString))){
                         availableDates.push(dateString);
@@ -302,7 +302,7 @@ window.onload = function(){
                         var rawDate = single.datetime;
                         var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                        var dateString = moment(actualDate).format("MMM D");
+                        var dateString = moment(actualDate).format("MMM D, YYYY");
 
                         if (dateString == availableDates[i] && single.species.includes(speciesSelected)){
                             count++;
@@ -328,7 +328,7 @@ window.onload = function(){
                     var rawDate = single.datetime;
                     var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                    var dateString = moment(actualDate).format("MMM D");
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
 
                     if (!(availableDates.includes(dateString))){
                         availableDates.push(dateString);
@@ -343,7 +343,7 @@ window.onload = function(){
                         var rawDate = single.datetime;
                         var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                        var dateString = moment(actualDate).format("MMM D");
+                        var dateString = moment(actualDate).format("MMM D, YYYY");
 
                         if (dateString == availableDates[i] && single.burger.includes(burgerSelected)){
                             count++;
@@ -369,7 +369,7 @@ window.onload = function(){
                     var rawDate = single.datetime;
                     var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                    var dateString = moment(actualDate).format("MMM D");
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
 
                     if (!(availableDates.includes(dateString))){
                         availableDates.push(dateString);
@@ -384,7 +384,7 @@ window.onload = function(){
                         var rawDate = single.datetime;
                         var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
 
-                        var dateString = moment(actualDate).format("MMM D");
+                        var dateString = moment(actualDate).format("MMM D, YYYY");
 
                         if (dateString == availableDates[i] && single.burger.includes(burgerSelected) && single.species.includes(speciesSelected)){
                             count++;
