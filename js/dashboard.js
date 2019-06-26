@@ -79,7 +79,7 @@ window.onload = function(){
 
                         var dateString = moment(actualDate).format("HH A");
 
-                        if (!(availableDates.includes(dateString))){
+                        if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
                             availableDates.push(dateString);
                         }
                     }
@@ -122,7 +122,7 @@ window.onload = function(){
 
                     var dateString = moment(actualDate).format("HH A");
 
-                    if (!(availableDates.includes(dateString))){
+                    if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
                         availableDates.push(dateString);
                     }
                 });
@@ -163,7 +163,7 @@ window.onload = function(){
 
                     var dateString = moment(actualDate).format("HH A");
 
-                    if (!(availableDates.includes(dateString))){
+                    if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
                         availableDates.push(dateString);
                     }
                 });
@@ -204,7 +204,7 @@ window.onload = function(){
 
                     var dateString = moment(actualDate).format("HH A");
 
-                    if (!(availableDates.includes(dateString))){
+                    if (!(availableDates.includes(dateString))&& single.datetime.includes(spec)){
                         availableDates.push(dateString);
                     }
                 });
@@ -459,8 +459,8 @@ window.onload = function(){
         var check = new Object();
 
         if (spec){
-            if (burgerSelected == 'general' && speciesSelected != 'general'){
-                title = `on ${spec} For ${speciesSelected}`;
+            if (burgerSelected != 'general' && speciesSelected == 'general'){
+                title = `on ${spec} For ${burgerSelected} over All Species`;
 
                 var availableDates = new Array();
                 var vals = new Array();
@@ -473,35 +473,139 @@ window.onload = function(){
 
                     var dateString = moment(actualDate).format("HH A");
 
-                    if (!(availableDates.includes(dateString))){
+                    if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
                         availableDates.push(dateString);
                     }
                 });
 
-                for (var i = 0; i < availableDates.length; i++){
-                    var count = 0;
-                    Object.keys(sales).map(function(key) {
-                        var single = sales[key];
-            
-                        var rawDate = single.datetime;
-                        var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+                
+                for (var i = 0; i < species_properties.length; i++){
+                    var counts = new Array();
 
-                        var dateString = moment(actualDate).format("HH A");
+                    for (var k = 0; k < availableDates.length; k++){
 
-                        if (dateString == availableDates[i] && single.species.includes(speciesSelected) && single.datetime.includes(spec)){
-                            count++;
-                        }
-            
-                    });
+                        var count = 0;
 
-                    vals.push(count);
+                        Object.keys(sales).map(function(key) {
+                            var single = sales[key];
+                
+                            var rawDate = single.datetime;
+                            var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                            var dateString = moment(actualDate).format("HH A");
+
+                            if (dateString == availableDates[k] && single.datetime.includes(spec) && single.burger.includes(burgerSelected) && single.species.includes(species_properties[i])){
+                                count++;
+                            }
+                
+                        });
+
+                        counts.push(count);
+                    }
+
+                    vals.push(counts);
                 }
 
                 check['labels'] = availableDates;
                 check['values'] = vals;
+                check['properties'] = species_properties;
 
-            } else if (burgerSelected != 'general' && speciesSelected == 'general'){
-                title = `on ${spec} For ${burgerSelected}`;
+                check['colors'] = [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(123, 222, 10, 1)'
+                ];
+
+                clearCanvas();
+                var ctx = document.getElementById('myChart').getContext('2d');
+                
+                
+                var chartData = {
+                    labels: check.labels,
+                    datasets: [{
+                        data: check.values[0],
+                        label: check.properties[0],
+                        fill: false,
+                        backgroundColor: check.colors[0],
+                        borderColor: check.colors[0]
+                    },{
+                        data: check.values[1],
+                        label: check.properties[1],
+                        fill: false,
+                        backgroundColor: check.colors[1],
+                        borderColor: check.colors[1]
+                    },
+                    {
+                        data: check.values[2],
+                        label: check.properties[2],
+                        fill: false,
+                        backgroundColor: check.colors[2],
+                        borderColor: check.colors[2]
+                    },
+                    {
+                        data: check.values[3],
+                        label: check.properties[3],
+                        fill: false,
+                        backgroundColor: check.colors[3],
+                        borderColor: check.colors[3]
+                    },
+                    {
+                        data: check.values[4],
+                        label: check.properties[4],
+                        fill: false,
+                        backgroundColor: check.colors[4],
+                        borderColor: check.colors[4]
+                    },
+                    {
+                        data: check.values[5],
+                        label: check.properties[5],
+                        fill: false,
+                        backgroundColor: check.colors[5],
+                        borderColor: check.colors[5]
+                    },
+                    {
+                        data: check.values[6],
+                        label: check.properties[6],
+                        fill: false,
+                        backgroundColor: check.colors[6],
+                        borderColor: check.colors[6]
+                    }]
+                };
+            
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        title: {
+                            display: true,
+                            text: `Comparative Sales ${title}`
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                display: true,
+                                scaleLabel:{
+                                    display: true,
+                                    labelString: 'Number of Burgers Sold'
+                                }
+                            }]
+                        },
+                        maintainAspectRatio: false,
+                        elements: {
+                            line: {
+                                tension: 0
+                            }
+                        }
+                    }
+                });
+            } else if (burgerSelected == 'general' && speciesSelected != 'general') {
+                title = `on ${spec} For ${speciesSelected} over All Burgers`;
 
                 var availableDates = new Array();
                 var vals = new Array();
@@ -514,38 +618,110 @@ window.onload = function(){
 
                     var dateString = moment(actualDate).format("HH A");
 
-                    if (!(availableDates.includes(dateString))){
+                    if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
                         availableDates.push(dateString);
                     }
                 });
 
-                for (var i = 0; i < availableDates.length; i++){
-                    var count = 0;
-                    Object.keys(sales).map(function(key) {
-                        var single = sales[key];
-            
-                        var rawDate = single.datetime;
-                        var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+                
+                for (var i = 0; i < burger_properties.length; i++){
+                    var counts = new Array();
 
-                        var dateString = moment(actualDate).format("HH A");
+                    for (var k = 0; k < availableDates.length; k++){
 
-                        if (dateString == availableDates[i] && single.burger.includes(burgerSelected) && single.datetime.includes(spec)){
-                            count++;
-                        }
-            
-                    });
+                        var count = 0;
 
-                    vals.push(count);
+                        Object.keys(sales).map(function(key) {
+                            var single = sales[key];
+                
+                            var rawDate = single.datetime;
+                            var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                            var dateString = moment(actualDate).format("HH A");
+
+                            if (dateString == availableDates[k] && single.datetime.includes(spec) && single.species.includes(speciesSelected) && single.burger.includes(burger_properties[i])){
+                                count++;
+                            }
+                
+                        });
+
+                        counts.push(count);
+                    }
+
+                    vals.push(counts);
                 }
 
                 check['labels'] = availableDates;
                 check['values'] = vals;
+                check['properties'] = burger_properties;
 
-            } 
+                check['colors'] =  [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ];
+
+                clearCanvas();
+                var ctx = document.getElementById('myChart').getContext('2d');
+                
+                
+                var chartData = {
+                    labels: check.labels,
+                    datasets: [{
+                        data: check.values[0],
+                        label: check.properties[0],
+                        fill: false,
+                        backgroundColor: check.colors[0],
+                        borderColor: check.colors[0]
+                    },{
+                        data: check.values[1],
+                        label: check.properties[1],
+                        fill: false,
+                        backgroundColor: check.colors[1],
+                        borderColor: check.colors[1]
+                    },
+                    {
+                        data: check.values[2],
+                        label: check.properties[2],
+                        fill: false,
+                        backgroundColor: check.colors[2],
+                        borderColor: check.colors[2]
+                    }]
+                };
+            
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        title: {
+                            display: true,
+                            text: `Comparative Sales ${title}`
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                display: true,
+                                scaleLabel:{
+                                    display: true,
+                                    labelString: 'Number of Burgers Sold'
+                                }
+                            }]
+                        },
+                        maintainAspectRatio: false,
+                        elements: {
+                            line: {
+                                tension: 0
+                            }
+                        }
+                    }
+                });
+            }
 
         } else {
             if (burgerSelected != 'general' && speciesSelected == 'general'){
-                title = `For ${burgerSelected}over All Species`;
+                title = `For ${burgerSelected} over All Species`;
 
                 var availableDates = new Array();
                 var vals = new Array();
@@ -689,7 +865,120 @@ window.onload = function(){
                         }
                     }
                 });
-            } 
+            } else if (burgerSelected == 'general' && speciesSelected != 'general') {
+                title = `For ${speciesSelected} over All Burgers`;
+
+                var availableDates = new Array();
+                var vals = new Array();
+
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                    if (!(availableDates.includes(dateString))){
+                        availableDates.push(dateString);
+                    }
+                });
+
+                
+                for (var i = 0; i < burger_properties.length; i++){
+                    var counts = new Array();
+
+                    for (var k = 0; k < availableDates.length; k++){
+
+                        var count = 0;
+
+                        Object.keys(sales).map(function(key) {
+                            var single = sales[key];
+                
+                            var rawDate = single.datetime;
+                            var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                            var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                            if (dateString == availableDates[k] && single.species.includes(speciesSelected) && single.burger.includes(burger_properties[i])){
+                                count++;
+                            }
+                
+                        });
+
+                        counts.push(count);
+                    }
+
+                    vals.push(counts);
+                }
+
+                check['labels'] = availableDates;
+                check['values'] = vals;
+                check['properties'] = burger_properties;
+
+                check['colors'] =  [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ];
+
+                clearCanvas();
+                var ctx = document.getElementById('myChart').getContext('2d');
+                
+                
+                var chartData = {
+                    labels: check.labels,
+                    datasets: [{
+                        data: check.values[0],
+                        label: check.properties[0],
+                        fill: false,
+                        backgroundColor: check.colors[0],
+                        borderColor: check.colors[0]
+                    },{
+                        data: check.values[1],
+                        label: check.properties[1],
+                        fill: false,
+                        backgroundColor: check.colors[1],
+                        borderColor: check.colors[1]
+                    },
+                    {
+                        data: check.values[2],
+                        label: check.properties[2],
+                        fill: false,
+                        backgroundColor: check.colors[2],
+                        borderColor: check.colors[2]
+                    }]
+                };
+            
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        title: {
+                            display: true,
+                            text: `Comparative Sales ${title}`
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                display: true,
+                                scaleLabel:{
+                                    display: true,
+                                    labelString: 'Number of Burgers Sold'
+                                }
+                            }]
+                        },
+                        maintainAspectRatio: false,
+                        elements: {
+                            line: {
+                                tension: 0
+                            }
+                        }
+                    }
+                });
+            }
 
         }
 
