@@ -14,10 +14,61 @@
     <link href="https://unpkg.com/tabulator-tables@4.2.7/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.7/dist/js/tabulator.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/dash-board.js"></script>
 </head>
 <body>
     <main class="dashboard">
+        <header class="dashboard__header-container">
+            <div class="dashboard__date-container">
+                <input type="date" name="bday" id="specific-date" class="dashboard__options-main">
+                <select class="dashboard__options-main dashboard__options-separate" id="species-filter">
+                    <option value="general">All Species</option>
+                    <option value="leatherback turtle">Leatherback Turtle</option>
+                    <option value="salmon">Salmon</option>
+                    <option value="seahorse">Seahorse</option>
+                    <option value="coral">Coral</option>
+                    <option value="giant clam">Giant Clam</option>
+                    <option value="grey whale">Grey Whale</option>
+                    <option value="sea lion">Sea Lion</option>
+                </select>
+                <select class="dashboard__options-main dashboard__options-separate"id="burger-filter">
+                    <option value="general">All Burgers</option>
+                    <option value="Krusty Combo">Krusty Combo</option>
+                    <option value="Krusty Deluxe">Krusty Deluxe</option>
+                    <option value="Krabby Pattie">Krabby Pattie</option>
+                </select>
+            </div>
+        </header>
+        <div class="dashboard__contents-container">
+            <div class="dashboard__contents-left">
+                <div class="dashboard__contents-thirds">
+                    <canvas id="burger-sales-chart"></canvas>
+                </div>
+                <div class="dashboard__contents-thirds">
+                    <canvas id="species-sales-chart"></canvas>
+                </div>
+                <div class="dashboard__contents-thirds">
+                    <canvas id="burger-species-chart"></canvas>
+                </div>
+            </div>
+            <div class="dashboard__contents-middle">
+                <div class="dashboard__contents-halves">
+                    <canvas id="general-sales"></canvas>
+                </div>
+                <div class="dashboard__contents-halves">
+                    <canvas id="comparative-sales"></canvas> 
+                </div>
+            </div>
+            <div class="dashboard__contents-right">
+                <div class="dashboard__contents-thirds">
+                </div>
+                <div class="dashboard__contents-thirds">
+                </div>
+                <div class="dashboard__contents-thirds">
+                </div>
+            </div>
+
+        </div>
         <!-- <nav class="dashboard__nav-secondary">
             <div class="dashboard__date-container">
                 <input type="date" name="bday" id="specific-date" class="dashboard__options-main">
