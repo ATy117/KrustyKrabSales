@@ -1058,7 +1058,7 @@ body{
 }
 
 .dashboard__contents-left{
-    width: 35%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -1075,7 +1075,7 @@ body{
 
 }
 .dashboard__contents-right{
-    width: 20%;
+    width: 15%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -1085,8 +1085,8 @@ body{
 }
 
 .dashboard__contents-thirds{
-    width: 90%;
-    height: 30%;
+    width: 95%;
+    height: 32.5%;
     border: 1px white solid;
     display: flex;
     justify-content: center;
@@ -1094,7 +1094,7 @@ body{
 }
 
 .dashboard__contents-halves{
-    width: 90%;
+    width: 92.5%;
     height: 45%;
     border: 1px white solid;
     display: flex;
