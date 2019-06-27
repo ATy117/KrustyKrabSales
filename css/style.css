@@ -1016,6 +1016,12 @@ body{
     flex-flow: column;
     height: 100vh;
 }
+/* 
+.dashboard {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
 
 .dashboard__nav{
     background-color: var(--accent-yellow);
@@ -1113,4 +1119,4 @@ body{
     height: 100%;
     padding-top: 1rem;
     padding-bottom: 1rem;
-}
+} */
