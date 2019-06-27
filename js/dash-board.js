@@ -12,12 +12,11 @@ Chart.defaults.global.defaultFontSize = 10;
 
 window.onload = function(){
     
-    var spec = document.getElementById('specific-date').value;
+    updateCharts();
 
-    generateBurgerSalesChart(spec);
-    generateSpeciesSalesChart(spec);
-    generateBurgerSpeciesChart(spec);
-    generateSalesComparative();
+    $('#specific-date').change(updateCharts);
+    $('#species-filter').change(updateCharts);
+    $('#burger-filter').change(updateCharts);
 
 
 
@@ -27,6 +26,16 @@ window.onload = function(){
 //     $('#myChart').remove(); // this is my <canvas> element
 //     $('.dashboard__contents').prepend('<canvas id="myChart" width="400" height="400"></canvas>');
 // };
+
+function updateCharts(){
+    var spec = document.getElementById('specific-date').value;
+    generateBurgerSalesChart(spec);
+    generateSpeciesSalesChart(spec);
+    generateBurgerSpeciesChart(spec);
+    generateSalesComparative();
+    generateSales();
+
+};
 
 function generateBurgerSalesChart(date){
 
@@ -850,3 +859,405 @@ function generateSalesComparative(){
 
     }
 };
+
+function generateSales(){
+    $('#general-sales-chart').remove(); // this is my <canvas> element
+    $('#general-sales').prepend('<canvas id="general-sales-chart"></canvas>');
+
+    var spec = document.getElementById('specific-date').value;
+    var speciesSelected = $('select#species-filter').children("option:selected").val();
+    var burgerSelected = $('select#burger-filter').children("option:selected").val();
+    // var keys = Object.keys(sales);
+    // var stuff = sales[keys[0]].datetime;
+    // var date = moment(stuff,"YYYY-MM-DD HH:mm:ss");
+    // console.log(date);
+
+    /* General */
+
+    
+    var title;
+    
+    var check = new Object();
+
+    if (spec){
+        if (burgerSelected == 'general' && speciesSelected == 'general'){
+            title = `on ${spec}`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                if (rawDate.includes(spec)){
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("HH A");
+
+                    if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
+                        availableDates.push(dateString);
+                    }
+                }
+            });
+
+            console.log(availableDates);
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("HH A");
+
+                    if (dateString == availableDates[i] && single.datetime.includes(spec)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+        } else if (burgerSelected == 'general' && speciesSelected != 'general'){
+            title = `on ${spec} For ${speciesSelected}`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("HH A");
+
+                if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("HH A");
+
+                    if (dateString == availableDates[i] && single.species.includes(speciesSelected) && single.datetime.includes(spec)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+
+        } else if (burgerSelected != 'general' && speciesSelected == 'general'){
+            title = `on ${spec} For ${burgerSelected}`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("HH A");
+
+                if (!(availableDates.includes(dateString)) && single.datetime.includes(spec)){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("HH A");
+
+                    if (dateString == availableDates[i] && single.burger.includes(burgerSelected) && single.datetime.includes(spec)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+
+        } else {
+            title = `on ${spec} For ${burgerSelected}s bought by ${speciesSelected}s`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("HH A");
+
+                if (!(availableDates.includes(dateString))&& single.datetime.includes(spec)){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("HH A");
+
+                    if (dateString == availableDates[i] && single.burger.includes(burgerSelected) && single.species.includes(speciesSelected) && single.datetime.includes(spec)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+        }
+
+    
+    } else {
+        if (burgerSelected == 'general' && speciesSelected == 'general'){
+            title = "(General)";
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                if (!(availableDates.includes(dateString))){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                    if (dateString == availableDates[i]){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+        } else if (burgerSelected == 'general' && speciesSelected != 'general'){
+            title = `For ${speciesSelected}`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                if (!(availableDates.includes(dateString))){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                    if (dateString == availableDates[i] && single.species.includes(speciesSelected)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+
+        } else if (burgerSelected != 'general' && speciesSelected == 'general'){
+            title = `For ${burgerSelected}`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                if (!(availableDates.includes(dateString))){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                    if (dateString == availableDates[i] && single.burger.includes(burgerSelected)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+
+        } else {
+            title = `For ${burgerSelected}s bought by ${speciesSelected}s`;
+
+            var availableDates = new Array();
+            var vals = new Array();
+
+            Object.keys(sales).map(function(key) {
+                var single = sales[key];
+
+                var rawDate = single.datetime;
+                var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                if (!(availableDates.includes(dateString))){
+                    availableDates.push(dateString);
+                }
+            });
+
+            for (var i = 0; i < availableDates.length; i++){
+                var count = 0;
+                Object.keys(sales).map(function(key) {
+                    var single = sales[key];
+        
+                    var rawDate = single.datetime;
+                    var actualDate = moment(rawDate, "YYYY-MM-DD HH:mm:ss");
+
+                    var dateString = moment(actualDate).format("MMM D, YYYY");
+
+                    if (dateString == availableDates[i] && single.burger.includes(burgerSelected) && single.species.includes(speciesSelected)){
+                        count++;
+                    }
+        
+                });
+
+                vals.push(count);
+            }
+
+            check['labels'] = availableDates;
+            check['values'] = vals;
+        }
+
+    }
+
+    var ctx = document.getElementById('general-sales-chart').getContext('2d');
+    
+    var chartData = {
+        labels: check.labels,
+        datasets: [{
+            data: check.values,
+            fill: false,
+            backgroundColor: 'rgba(255,255,255, 1)',
+            borderColor: 'rgba(255,255,255, 1)'
+        }]
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                text: `Sales ${title}`
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    display: true,
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Number of Burgers Sold'
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            },
+            maintainAspectRatio: false,
+            elements: {
+                line: {
+                    tension: 0
+                }
+            }
+        }
+    });
+
+}
