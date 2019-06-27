@@ -14,3 +14,15 @@ window.onload = function(){
 
 
 };
+
+function generateBurgerSalesChart(date){
+
+};
+
+function generateSpeciesSalesChart(date){
+
+};
+
+function generateBurgerSpeciesChart(date){
+
+};
