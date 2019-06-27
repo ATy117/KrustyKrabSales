@@ -919,7 +919,7 @@ body{
 .upload__section{
     width: 100vw;
     height: 100vh;
-    background-color: var(--accent-yellow-light);
+    background-color: var(--teal-light);
     position: relative;
 
 }
@@ -927,7 +927,7 @@ body{
 .upload__container{
     width: 50%;
     height: auto;
-    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 10, .2);
     position: absolute;
     top:50%;
     left: 50%; 
@@ -936,6 +936,7 @@ body{
     overflow: hidden;
     text-align: center;
     color: var(--blue-dark);
+    background-color: var(--accent-yellow-light);
 }
 
 .upload__banner{
@@ -961,13 +962,14 @@ body{
     padding-top: 15px;
     padding-bottom: 15px;
     width: 200px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--teal-light);
+    font-size: 1.10rem;
+    font-weight: 600;
+    color: #e0dddd;
     background-color:var(--blue-dark);
     cursor: pointer;
     border-radius: 3px;
     margin-bottom: 15px;
+    font-family: var(--font-2); 
     
 }
 
@@ -987,14 +989,19 @@ body{
 }
 
 .upload__continue{
-    background-color: var(--red-light);
+    background-color: var(--red-pure);
     border: 2px solid var(--red-pure);
-    color: white;
+    color:white;
+    font-family: var(--font-2);
+    font-weight: 550;
 }
 
 .upload__logout{
-    color: var(--accent-orange);
-    border: 2px solid var(--accent-orange);
+    color: white;
+    background-color: var(--red-light);
+    border: 2px solid var(--red-pure);
+    font-family: var(--font-2);
+    font-weight: 550;
 }
 
 @media only screen and (max-width:636px){
