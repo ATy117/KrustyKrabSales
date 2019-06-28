@@ -18,7 +18,34 @@ window.onload = function(){
     $('#species-filter').change(updateCharts);
     $('#burger-filter').change(updateCharts);
 
+    var tableData = Object.keys(sales).map(function(key) {
 
+        var row = new Array();
+
+        var single = sales[key];
+
+        row.push(key);
+        row.push(single.datetime);
+        row.push(single.species);
+        row.push(single.burger);
+
+        // row['id'] = key;
+        // row['datetime'] = single.datetime;
+        // row['species'] = single.species;
+        // row['burger'] = single.burger;
+        return row;
+    });
+
+
+    $('#tableDetails').DataTable( {
+        data: tableData,
+        columns: [
+            { title: "ID" },
+            { title: "DateTime" },
+            { title: "Species" },
+            { title: "Burger" }
+        ]
+    } );
 
 };
 
