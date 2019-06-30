@@ -12,7 +12,14 @@ Chart.defaults.global.defaultFontSize = 10;
 
 window.onload = function(){
     
-    updateCharts();
+    var spec = document.getElementById('specific-date').value;
+    var speciesSelected = 'general';
+    var burgerSelected = 'Krabby Pattie';
+    generateBurgerSalesChart(spec);
+    generateSpeciesSalesChart(spec);
+    generateBurgerSpeciesChart(spec);
+    generateSalesComparative(spec, speciesSelected, burgerSelected);
+    generateSales();
 
     $('#specific-date').change(updateCharts);
     $('#species-filter').change(updateCharts);
@@ -56,10 +63,12 @@ window.onload = function(){
 
 function updateCharts(){
     var spec = document.getElementById('specific-date').value;
+    var speciesSelected = $('select#species-filter').children("option:selected").val();
+    var burgerSelected = $('select#burger-filter').children("option:selected").val();
     generateBurgerSalesChart(spec);
     generateSpeciesSalesChart(spec);
     generateBurgerSpeciesChart(spec);
-    generateSalesComparative();
+    generateSalesComparative(spec, speciesSelected, burgerSelected);
     generateSales();
 
 };
@@ -349,14 +358,9 @@ function generateBurgerSpeciesChart(date){
     });
 };
 
-function generateSalesComparative(){
-
-    $('#comparative-sales-chart').remove(); // this is my <canvas> element
-    $('#comparative-sales').prepend('<canvas id="comparative-sales-chart"></canvas>');
+function generateSalesComparative(spec, speciesSelected, burgerSelected){
     
-    var spec = document.getElementById('specific-date').value;
-    var speciesSelected = $('select#species-filter').children("option:selected").val();
-    var burgerSelected = $('select#burger-filter').children("option:selected").val();
+    
 
     var title;
     
@@ -423,6 +427,9 @@ function generateSalesComparative(){
                 'rgba(255, 159, 64, 1)',
                 'rgba(123, 222, 10, 1)'
             ];
+
+            $('#comparative-sales-chart').remove(); // this is my <canvas> element
+            $('#comparative-sales').prepend('<canvas id="comparative-sales-chart"></canvas>');
 
             
             var ctx = document.getElementById('comparative-sales-chart').getContext('2d');
@@ -565,6 +572,8 @@ function generateSalesComparative(){
                 'rgba(255, 206, 86, 1)'
             ];
 
+            $('#comparative-sales-chart').remove(); // this is my <canvas> element
+            $('#comparative-sales').prepend('<canvas id="comparative-sales-chart"></canvas>');
             
             var ctx = document.getElementById('comparative-sales-chart').getContext('2d');
             
@@ -684,6 +693,9 @@ function generateSalesComparative(){
                 'rgba(255, 159, 64, 1)',
                 'rgba(123, 222, 10, 1)'
             ];
+
+            $('#comparative-sales-chart').remove(); // this is my <canvas> element
+            $('#comparative-sales').prepend('<canvas id="comparative-sales-chart"></canvas>');
 
             
             var ctx = document.getElementById('comparative-sales-chart').getContext('2d');
@@ -826,6 +838,8 @@ function generateSalesComparative(){
                 'rgba(255, 206, 86, 1)'
             ];
 
+            $('#comparative-sales-chart').remove(); // this is my <canvas> element
+            $('#comparative-sales').prepend('<canvas id="comparative-sales-chart"></canvas>');
             
             var ctx = document.getElementById('comparative-sales-chart').getContext('2d');
             
