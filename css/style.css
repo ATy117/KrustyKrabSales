@@ -636,6 +636,7 @@ body{
 
 .popup__submit-button{
     text-decoration: none;
+    cursor: pointer;
 
     display:block;
     color: black;
